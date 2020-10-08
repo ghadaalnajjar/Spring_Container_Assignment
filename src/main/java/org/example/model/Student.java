@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.sequence.StudentSequence;
+
 import java.util.List;
 import java.util.Objects;
 

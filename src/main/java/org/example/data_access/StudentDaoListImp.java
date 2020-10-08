@@ -12,15 +12,20 @@ public class StudentDaoListImp implements StudentDao {
 
     @Override
     public Student save(Student student) {
-        Student findStudent = find(student.getId());
-        if (student.getId() == null || findStudent.getId() == null) {
+        if (student.getId() == null) {
             student.setId(StudentSequence.nextStudentId());
             students.add(student);
         } else {
-            students.remove(findStudent);
-            findStudent.setId(student.getId());
-            findStudent.setName(student.getName());
-            students.add(findStudent);
+            Student findStudent = find(student.getId());
+            if(findStudent.getId() == null){
+                student.setId(StudentSequence.nextStudentId());
+                students.add(student);
+            }else {
+                students.remove(findStudent);
+                findStudent.setId(student.getId());
+                findStudent.setName(student.getName());
+                students.add(findStudent);
+            }
         }
         return student;
     }
