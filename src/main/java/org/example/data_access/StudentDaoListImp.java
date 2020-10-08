@@ -2,10 +2,12 @@ package org.example.data_access;
 
 import org.example.model.Student;
 import org.example.sequence.StudentSequence;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("studentDao")
 public class StudentDaoListImp implements StudentDao {
 
     private List<Student> students = new ArrayList<>();
